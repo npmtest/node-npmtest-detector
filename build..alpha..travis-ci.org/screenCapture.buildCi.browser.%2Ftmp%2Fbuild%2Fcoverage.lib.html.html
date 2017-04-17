@@ -1,0 +1,1222 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-detector/node_modules/detector/lib/web-rules.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-detector">npmtest-detector (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-detector/node_modules/detector/lib/web-rules.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">10.66% <small>(13 / 122)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0.96% <small>(1 / 104)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">11.3% <small>(13 / 115)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-detector/node_modules/detector/lib/</a> » web-rules.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+const win = typeof window === "undefined" ? global : <span class="branch-1 cbranch-no" title="branch not covered">window;</span>
+const external = win.external;
+const re_msie = /\b(?:msie |ie |trident\/[0-9].*rv[ :])([0-9.]+)/;
+const re_blackberry_10 = /\bbb10\b.+?\bversion\/([\d.]+)/;
+const re_blackberry_6_7 = /\bblackberry\b.+\bversion\/([\d.]+)/;
+const re_blackberry_4_5 = /\bblackberry\d+\/([\d.]+)/;
+&nbsp;
+const NA_VERSION = "-1";
+&nbsp;
+// 硬件设备信息识别表达式。
+// 使用数组可以按优先级排序。
+const DEVICES = [
+  ["nokia", <span class="fstat-no" title="function not covered">function(ua){</span>
+    // 不能将两个表达式合并，因为可能出现 "nokia; nokia 960"
+    // 这种情况下会优先识别出 nokia/-1
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("nokia ") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\bnokia ([0-9]+)?/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\bnokia([a-z0-9]+)?/;</span>
+    }
+  }],
+  // 三星有 Android 和 WP 设备。
+  ["samsung", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("samsung") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\bsamsung(?:[ \-](?:sgh|gt|sm))?-([a-z0-9]+)/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\b(?:sgh|sch|gt|sm)-([a-z0-9]+)/;</span>
+    }
+  }],
+  ["wp", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    return ua.indexOf("windows phone ") !== -1 ||</span>
+      ua.indexOf("xblwp") !== -1 ||
+      ua.indexOf("zunewp") !== -1 ||
+      ua.indexOf("windows ce") !== -1;
+  }],
+  ["pc", "windows"],
+  ["ipad", "ipad"],
+  // ipod 规则应置于 iphone 之前。
+  ["ipod", "ipod"],
+  ["iphone", /\biphone\b|\biph(\d)/],
+  ["mac", "macintosh"],
+  // 小米
+  ["mi", /\bmi[ \-]?([a-z0-9 ]+(?= build|\)))/],
+  // 红米
+  ["hongmi", /\bhm[ \-]?([a-z0-9]+)/],
+  ["aliyun", /\baliyunos\b(?:[\-](\d+))?/],
+  ["meizu", <span class="fstat-no" title="function not covered">function(ua) {</span>
+<span class="cstat-no" title="statement not covered">    return ua.indexOf("meizu") &gt;= 0 ?</span>
+      /\bmeizu[\/ ]([a-z0-9]+)\b/
+      :
+      /\bm([0-9cx]{1,4})\b/;
+  }],
+  ["nexus", /\bnexus ([0-9s.]+)/],
+  ["huawei", <span class="fstat-no" title="function not covered">function(ua) {</span>
+<span class="cstat-no" title="statement not covered">    const re_mediapad = /\bmediapad (.+?)(?= build\/huaweimediapad\b)/;</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("huawei-huawei") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\bhuawei\-huawei\-([a-z0-9\-]+)/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(re_mediapad.test(ua)){</span>
+<span class="cstat-no" title="statement not covered">      return re_mediapad;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\bhuawei[ _\-]?([a-z0-9]+)/;</span>
+    }
+  }],
+  ["lenovo", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("lenovo-lenovo") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\blenovo\-lenovo[ \-]([a-z0-9]+)/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\blenovo[ \-]?([a-z0-9]+)/;</span>
+    }
+  }],
+  // 中兴
+  ["zte", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(/\bzte\-[tu]/.test(ua)){</span>
+<span class="cstat-no" title="statement not covered">      return /\bzte-[tu][ _\-]?([a-su-z0-9\+]+)/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\bzte[ _\-]?([a-su-z0-9\+]+)/;</span>
+    }
+  }],
+  // 步步高
+  ["vivo", /\bvivo(?: ([a-z0-9]+))?/],
+  ["htc", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(/\bhtc[a-z0-9 _\-]+(?= build\b)/.test(ua)){</span>
+<span class="cstat-no" title="statement not covered">      return /\bhtc[ _\-]?([a-z0-9 ]+(?= build))/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\bhtc[ _\-]?([a-z0-9 ]+)/;</span>
+    }
+  }],
+  ["oppo", /\boppo[_]([a-z0-9]+)/],
+  ["konka", /\bkonka[_\-]([a-z0-9]+)/],
+  ["sonyericsson", /\bmt([a-z0-9]+)/],
+  ["coolpad", /\bcoolpad[_ ]?([a-z0-9]+)/],
+  ["lg", /\blg[\-]([a-z0-9]+)/],
+  ["android", /\bandroid\b|\badr\b/],
+  ["blackberry", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if (ua.indexOf("blackberry") &gt;= 0) {</span>
+<span class="cstat-no" title="statement not covered">      return /\bblackberry\s?(\d+)/;</span>
+    }
+<span class="cstat-no" title="statement not covered">    return "bb10";</span>
+  }],
+];
+&nbsp;
+// 操作系统信息识别表达式
+const OS = [
+  ["wp", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("windows phone ") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\bwindows phone (?:os )?([0-9.]+)/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(ua.indexOf("xblwp") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\bxblwp([0-9.]+)/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(ua.indexOf("zunewp") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\bzunewp([0-9.]+)/;</span>
+    }
+<span class="cstat-no" title="statement not covered">    return "windows phone";</span>
+  }],
+  ["windows", /\bwindows nt ([0-9.]+)/],
+  ["macosx", /\bmac os x ([0-9._]+)/],
+  ["ios", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(/\bcpu(?: iphone)? os /.test(ua)){</span>
+<span class="cstat-no" title="statement not covered">      return /\bcpu(?: iphone)? os ([0-9._]+)/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(ua.indexOf("iph os ") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\biph os ([0-9_]+)/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\bios\b/;</span>
+    }
+  }],
+  ["yunos", /\baliyunos ([0-9.]+)/],
+  ["android", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("android") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">      return /\bandroid[ \/-]?([0-9.x]+)?/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(ua.indexOf("adr") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">      if(ua.indexOf("mqqbrowser") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">        return /\badr[ ]\(linux; u; ([0-9.]+)?/;</span>
+      }else{
+<span class="cstat-no" title="statement not covered">        return /\badr(?:[ ]([0-9.]+))?/;</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered">    return "android";</span>
+    //return /\b(?:android|\badr)(?:[\/\- ](?:\(linux; u; )?)?([0-9.x]+)?/;
+  }],
+  ["chromeos", /\bcros i686 ([0-9.]+)/],
+  ["linux", "linux"],
+  ["windowsce", /\bwindows ce(?: ([0-9.]+))?/],
+  ["symbian", /\bsymbian(?:os)?\/([0-9.]+)/],
+  ["blackberry", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    const m = ua.match(re_blackberry_10) ||</span>
+      ua.match(re_blackberry_6_7) ||
+      ua.match(re_blackberry_4_5);
+<span class="cstat-no" title="statement not covered">    return m ? {version: m[1]} : "blackberry";</span>
+  }],
+];
+&nbsp;
+// 针对同源的 TheWorld 和 360 的 external 对象进行检测。
+// @param {String} key, 关键字，用于检测浏览器的安装路径中出现的关键字。
+// @return {Undefined,Boolean,Object} 返回 undefined 或 false 表示检测未命中。
+<span class="fstat-no" title="function not covered">function checkTW360External(key){</span>
+<span class="cstat-no" title="statement not covered">  if(!external){ <span class="cstat-no" title="statement not covered">return; </span>} </span>// return undefined.
+<span class="cstat-no" title="statement not covered">  try{</span>
+    //        360安装路径：
+    //        C:%5CPROGRA~1%5C360%5C360se3%5C360SE.exe
+<span class="cstat-no" title="statement not covered">    const runpath = external.twGetRunPath.toLowerCase();</span>
+    // 360SE 3.x ~ 5.x support.
+    // 暴露的 external.twGetVersion 和 external.twGetSecurityID 均为 undefined。
+    // 因此只能用 try/catch 而无法使用特性判断。
+<span class="cstat-no" title="statement not covered">    const security = external.twGetSecurityID(win);</span>
+<span class="cstat-no" title="statement not covered">    const version = external.twGetVersion(security);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    if (runpath &amp;&amp; runpath.indexOf(key) === -1) { <span class="cstat-no" title="statement not covered">return false; </span>}</span>
+<span class="cstat-no" title="statement not covered">    if (version){<span class="cstat-no" title="statement not covered">return {version: version}; </span>}</span>
+  }catch(ex){ /* */ }
+}
+&nbsp;
+const ENGINE = [
+  ["edgehtml", /edge\/([0-9.]+)/],
+  ["trident", re_msie],
+  ["blink", <span class="fstat-no" title="function not covered">function(){</span>
+<span class="cstat-no" title="statement not covered">    return "chrome" in win &amp;&amp; "CSS" in win &amp;&amp; /\bapplewebkit[\/]?([0-9.+]+)/;</span>
+  }],
+  ["webkit", /\bapplewebkit[\/]?([0-9.+]+)/],
+  ["gecko", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    const match = ua.match(/\brv:([\d\w.]+).*\bgecko\/(\d+)/);</span>
+<span class="cstat-no" title="statement not covered">    if (match) {</span>
+<span class="cstat-no" title="statement not covered">      return {</span>
+        version: match[1] + "." + match[2],
+      };
+    }
+  }],
+  ["presto", /\bpresto\/([0-9.]+)/],
+  ["androidwebkit", /\bandroidwebkit\/([0-9.]+)/],
+  ["coolpadwebkit", /\bcoolpadwebkit\/([0-9.]+)/],
+  ["u2", /\bu2\/([0-9.]+)/],
+  ["u3", /\bu3\/([0-9.]+)/],
+];
+const BROWSER = [
+  // Microsoft Edge Browser, Default browser in Windows 10.
+  ["edge", /edge\/([0-9.]+)/],
+  // Sogou.
+  ["sogou", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if (ua.indexOf("sogoumobilebrowser") &gt;= 0) {</span>
+<span class="cstat-no" title="statement not covered">      return /sogoumobilebrowser\/([0-9.]+)/;</span>
+    } else <span class="cstat-no" title="statement not covered">if (ua.indexOf("sogoumse") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">      return true;</span>
+    }
+<span class="cstat-no" title="statement not covered">    return / se ([0-9.x]+)/;</span>
+  }],
+  // TheWorld (世界之窗)
+  // 由于裙带关系，TheWorld API 与 360 高度重合。
+  // 只能通过 UA 和程序安装路径中的应用程序名来区分。
+  // TheWorld 的 UA 比 360 更靠谱，所有将 TheWorld 的规则放置到 360 之前。
+  ["theworld", <span class="fstat-no" title="function not covered">function(){</span>
+<span class="cstat-no" title="statement not covered">    const x = checkTW360External("theworld");</span>
+<span class="cstat-no" title="statement not covered">    if(typeof x !== "undefined"){ <span class="cstat-no" title="statement not covered">return x; </span>}</span>
+<span class="cstat-no" title="statement not covered">    return /theworld(?: ([\d.])+)?/;</span>
+  }],
+  // 360SE, 360EE.
+  ["360", <span class="fstat-no" title="function not covered">function(ua) {</span>
+<span class="cstat-no" title="statement not covered">    const x = checkTW360External("360se");</span>
+<span class="cstat-no" title="statement not covered">    if(typeof x !== "undefined"){ <span class="cstat-no" title="statement not covered">return x; </span>}</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("360 aphone browser") !== -1){</span>
+<span class="cstat-no" title="statement not covered">      return /\b360 aphone browser \(([^\)]+)\)/;</span>
+    }
+<span class="cstat-no" title="statement not covered">    return /\b360(?:se|ee|chrome|browser)\b/;</span>
+  }],
+  // Maxthon
+  ["maxthon", <span class="fstat-no" title="function not covered">function(){</span>
+<span class="cstat-no" title="statement not covered">    try{</span>
+<span class="cstat-no" title="statement not covered">      if(external &amp;&amp; (external.mxVersion || external.max_version)){</span>
+<span class="cstat-no" title="statement not covered">        return {</span>
+          version: external.mxVersion || external.max_version,
+        };
+      }
+    }catch(ex){ /* */ }
+<span class="cstat-no" title="statement not covered">    return /\b(?:maxthon|mxbrowser)(?:[ \/]([0-9.]+))?/;</span>
+  }],
+  ["micromessenger", /\bmicromessenger\/([\d.]+)/],
+  ["qq", /\bm?qqbrowser\/([0-9.]+)/],
+  ["green", "greenbrowser"],
+  ["tt", /\btencenttraveler ([0-9.]+)/],
+  ["liebao", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if (ua.indexOf("liebaofast") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">      return /\bliebaofast\/([0-9.]+)/;</span>
+    }
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("lbbrowser") === -1){ <span class="cstat-no" title="statement not covered">return false; </span>}</span>
+<span class="cstat-no" title="statement not covered">    let version;</span>
+<span class="cstat-no" title="statement not covered">    try{</span>
+<span class="cstat-no" title="statement not covered">      if(external &amp;&amp; external.LiebaoGetVersion){</span>
+<span class="cstat-no" title="statement not covered">        version = external.LiebaoGetVersion();</span>
+      }
+    }catch(ex){ /* */ }
+<span class="cstat-no" title="statement not covered">    return {</span>
+      version: version || NA_VERSION,
+    };
+  }],
+  ["tao", /\btaobrowser\/([0-9.]+)/],
+  ["coolnovo", /\bcoolnovo\/([0-9.]+)/],
+  ["saayaa", "saayaa"],
+  // 有基于 Chromniun 的急速模式和基于 IE 的兼容模式。必须在 IE 的规则之前。
+  ["baidu", /\b(?:ba?idubrowser|baiduhd)[ \/]([0-9.x]+)/],
+  // 后面会做修复版本号，这里只要能识别是 IE 即可。
+  ["ie", re_msie],
+  ["mi", /\bmiuibrowser\/([0-9.]+)/],
+  // Opera 15 之后开始使用 Chromniun 内核，需要放在 Chrome 的规则之前。
+  ["opera", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    const re_opera_old = /\bopera.+version\/([0-9.ab]+)/;</span>
+<span class="cstat-no" title="statement not covered">    const re_opera_new = /\bopr\/([0-9.]+)/;</span>
+<span class="cstat-no" title="statement not covered">    return re_opera_old.test(ua) ? re_opera_old : re_opera_new;</span>
+  }],
+  ["oupeng", /\boupeng\/([0-9.]+)/],
+  ["yandex", /yabrowser\/([0-9.]+)/],
+  // 支付宝手机客户端
+  ["ali-ap", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("aliapp") &gt; 0){</span>
+<span class="cstat-no" title="statement not covered">      return /\baliapp\(ap\/([0-9.]+)\)/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\balipayclient\/([0-9.]+)\b/;</span>
+    }
+  }],
+  // 支付宝平板客户端
+  ["ali-ap-pd", /\baliapp\(ap-pd\/([0-9.]+)\)/],
+  // 支付宝商户客户端
+  ["ali-am", /\baliapp\(am\/([0-9.]+)\)/],
+  // 淘宝手机客户端
+  ["ali-tb", /\baliapp\(tb\/([0-9.]+)\)/],
+  // 淘宝平板客户端
+  ["ali-tb-pd", /\baliapp\(tb-pd\/([0-9.]+)\)/],
+  // 天猫手机客户端
+  ["ali-tm", /\baliapp\(tm\/([0-9.]+)\)/],
+  // 天猫平板客户端
+  ["ali-tm-pd", /\baliapp\(tm-pd\/([0-9.]+)\)/],
+  // UC 浏览器，可能会被识别为 Android 浏览器，规则需要前置。
+  // UC 桌面版浏览器携带 Chrome 信息，需要放在 Chrome 之前。
+  ["uc", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("ucbrowser/") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">      return /\bucbrowser\/([0-9.]+)/;</span>
+    } else <span class="cstat-no" title="statement not covered">if(ua.indexOf("ubrowser/") &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered">      return /\bubrowser\/([0-9.]+)/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(/\buc\/[0-9]/.test(ua)){</span>
+<span class="cstat-no" title="statement not covered">      return /\buc\/([0-9.]+)/;</span>
+    }else <span class="cstat-no" title="statement not covered">if(ua.indexOf("ucweb") &gt;= 0){</span>
+      // `ucweb/2.0` is compony info.
+      // `UCWEB8.7.2.214/145/800` is browser info.
+<span class="cstat-no" title="statement not covered">      return /\bucweb([0-9.]+)?/;</span>
+    }else{
+<span class="cstat-no" title="statement not covered">      return /\b(?:ucbrowser|uc)\b/;</span>
+    }
+  }],
+  ["chrome", / (?:chrome|crios|crmo)\/([0-9.]+)/],
+  // Android 默认浏览器。该规则需要在 safari 之前。
+  ["android", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    if(ua.indexOf("android") === -1){ <span class="cstat-no" title="statement not covered">return; </span>}</span>
+<span class="cstat-no" title="statement not covered">    return /\bversion\/([0-9.]+(?: beta)?)/;</span>
+  }],
+  ["blackberry", <span class="fstat-no" title="function not covered">function(ua){</span>
+<span class="cstat-no" title="statement not covered">    const m = ua.match(re_blackberry_10) ||</span>
+      ua.match(re_blackberry_6_7) ||
+      ua.match(re_blackberry_4_5);
+<span class="cstat-no" title="statement not covered">    return m ? {version: m[1]} : "blackberry";</span>
+  }],
+  ["safari", /\bversion\/([0-9.]+(?: beta)?)(?: mobile(?:\/[a-z0-9]+)?)? safari\//],
+  // 如果不能被识别为 Safari，则猜测是 WebView。
+  ["webview", /\bcpu(?: iphone)? os (?:[0-9._]+).+\bapplewebkit\b/],
+  ["firefox", /\bfirefox\/([0-9.ab]+)/],
+  ["nokia", /\bnokiabrowser\/([0-9.]+)/],
+];
+&nbsp;
+module.exports = {
+  device: DEVICES,
+  os: OS,
+  browser: BROWSER,
+  engine: ENGINE,
+  re_msie: re_msie,
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 23:42:58 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
