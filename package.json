@@ -1,6 +1,6 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "test coverage for [detector (v2.5.0)](http://spmjs.io/docs/detector/) [![npm package](https://img.shields.io/npm/v/npmtest-detector.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-detector) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-detector.svg)](https://travis-ci.org/npmtest/node-npmtest-detector)",
+    "description": "#### basic test coverage for  [detector (v2.5.0)](http://spmjs.io/docs/detector/)  [![npm package](https://img.shields.io/npm/v/npmtest-detector.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-detector) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-detector.svg)](https://travis-ci.org/npmtest/node-npmtest-detector)",
     "devDependencies": {
         "detector": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",

@@ -1,4 +1,7 @@
-# test coverage for  [detector (v2.5.0)](http://spmjs.io/docs/detector/)  [![npm package](https://img.shields.io/npm/v/npmtest-detector.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-detector) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-detector.svg)](https://travis-ci.org/npmtest/node-npmtest-detector)
+# npmtest-detector
+
+#### basic test coverage for  [detector (v2.5.0)](http://spmjs.io/docs/detector/)  [![npm package](https://img.shields.io/npm/v/npmtest-detector.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-detector) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-detector.svg)](https://travis-ci.org/npmtest/node-npmtest-detector)
+
 #### The module for detect client-side information.
 
 [![NPM](https://nodei.co/npm/detector.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/detector)
@@ -7,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-detector/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-detector/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-detector/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-detector/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-detector/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-detector/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-detector/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-detector/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-detector/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-detector/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-detector/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-detector/build/coverage.html/index.html)
 
