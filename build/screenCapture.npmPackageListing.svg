@@ -1,19 +1,19 @@
 <svg height="254" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="254" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-17 23:44:01 +0000    72677 bytes  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-17 23:44:01 +0000     4071 bytes  HISTORY.md</tspan>
-<tspan x="10" y="58">  2.  2017-04-17 23:44:01 +0000     8876 bytes  README-zh_CN.md</tspan>
-<tspan x="10" y="74">  3.  2017-04-17 23:44:01 +0000     9127 bytes  README.md</tspan>
-<tspan x="10" y="90">  4.  2017-04-17 23:44:01 +0000     1088 bytes  bin/detector</tspan>
-<tspan x="10" y="106">  5.  2017-04-17 23:44:01 +0000     5096 bytes  lib/detector.js</tspan>
-<tspan x="10" y="122">  6.  2017-04-17 23:44:01 +0000      156 bytes  lib/node-detector.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-17 23:44:01 +0000     7218 bytes  lib/rules.js</tspan>
-<tspan x="10" y="154">  8.  2017-04-17 23:44:01 +0000     3012 bytes  lib/web-detector.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-17 23:44:01 +0000    10834 bytes  lib/web-rules.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-17 23:44:01 +0000     3272 bytes  package.json</tspan>
-<tspan x="10" y="202"> 11.  2017-04-17 23:44:01 +0000     6266 bytes  web/detector.js</tspan>
-<tspan x="10" y="218"> 12.  2017-04-17 23:44:01 +0000     3028 bytes  web/web-detector.js</tspan>
-<tspan x="10" y="234"> 13.  2017-04-17 23:44:01 +0000    10633 bytes  web/web-rules.js</tspan>
+<tspan x="10" y="26">  0.  2017-04-25 10:13:45 +0000    72677 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-25 10:13:45 +0000     4071 bytes  HISTORY.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-25 10:13:45 +0000     8876 bytes  README-zh_CN.md</tspan>
+<tspan x="10" y="74">  3.  2017-04-25 10:13:45 +0000     9127 bytes  README.md</tspan>
+<tspan x="10" y="90">  4.  2017-04-25 10:13:45 +0000     1088 bytes  bin/detector</tspan>
+<tspan x="10" y="106">  5.  2017-04-25 10:13:45 +0000     5096 bytes  lib/detector.js</tspan>
+<tspan x="10" y="122">  6.  2017-04-25 10:13:45 +0000      156 bytes  lib/node-detector.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-25 10:13:45 +0000     7218 bytes  lib/rules.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-25 10:13:45 +0000     3012 bytes  lib/web-detector.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-25 10:13:45 +0000    10834 bytes  lib/web-rules.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-25 10:13:45 +0000     3272 bytes  package.json</tspan>
+<tspan x="10" y="202"> 11.  2017-04-25 10:13:45 +0000     6266 bytes  web/detector.js</tspan>
+<tspan x="10" y="218"> 12.  2017-04-25 10:13:45 +0000     3028 bytes  web/web-detector.js</tspan>
+<tspan x="10" y="234"> 13.  2017-04-25 10:13:45 +0000    10633 bytes  web/web-rules.js</tspan>
 </text>
 </svg>
